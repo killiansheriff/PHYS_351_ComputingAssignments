@@ -1,0 +1,11 @@
+Number of Diff Equations 3
+q_i[0] = 2.000000
+q_i[1] = 4.000000
+q_i[2] = 1.000000
+Initial Time 0.000000e+00
+Final Time 2.000000e+01
+Number of Time Intervals 100
+Time Step Size 2.000000e-01
+I_prin[0] = 3.000000
+I_prin[1] = 4.000000
+I_prin[2] = 7.000000

@@ -1,0 +1,8 @@
+Mass: 25.000000 kg
+Initial Position: 4.000000 m
+Initial Momentum: 6.000000 kg*m/s
+Initial Time: 0.000000 s
+Final Time: 300.000000 s
+Number of Time Intervals: 10
+Time Step Size: 30.000000 s
+Number of 1st order equations: 3

@@ -1,0 +1,13 @@
+Number of equations: 4
+q 0: 1.000000e-01
+q 1: 5.000000e-02
+q 2: 0.000000e+00
+q 3: 2.000000e+00
+Initial time: 0.000000
+Final time:  20.000000
+Size of time intervals: 0.100000
+Mass 1: 0.400000 kg 
+Length 1: 0.400000 m 
+Mass 2: 0.900000 kg 
+Length 2: 0.700000 m 
+Minimum precision: 1.000000e-10
