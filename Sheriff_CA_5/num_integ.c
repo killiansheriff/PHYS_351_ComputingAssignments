@@ -142,30 +142,30 @@ int TestNumInteg(){
 
         num_intervals=100;
         f= NumIntegrateV(integrand, x_down, x_up, num_intervals);
-        err=(f-g)/g;
+        err=fabs((f-g))/g;
         fprintf(output,"f= %lf, Number of Intervals = %d, Relative Error =  %e\n",f, num_intervals, err);
 
         num_intervals=1000;
         f= NumIntegrateV(integrand, x_down, x_up, num_intervals);
-        err=(f-g)/g;
+        err=fabs((f-g))/g;
         fprintf(output,"f= %lf, Number of Intervals = %d, Relative Error =  %e\n",f, num_intervals, err);
 
         tol= 1.0e-10;
         limit=10000;
         count=0;
         f = Integrate(integrand, x_down, x_up, tol, &count, limit);
-        err=(f-g)/g;
+        err=fabs((f-g))/g;
         fprintf(output,"f= %lf, Number of Intervals = %d, Relative Error =  %e\n",f, count, err);
 
         num_intervals=count;
         f= NumIntegrateV(integrand, x_down, x_up, num_intervals);
-        err=(f-g)/g;
+        err=fabs((f-g))/g;
         fprintf(output,"f= %lf, Number of Intervals = %d, Relative Error =  %e\n",f, num_intervals, err);
         fclose(output);
         return 1;
 }
 double test_func(double x){
-        double f, R, a;
+        double f,R, a;
         f = sin(1.0/x);
         return f;
 }
