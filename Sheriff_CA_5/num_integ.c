@@ -136,7 +136,7 @@ double Integrate(double (*integrand)(double), double x_down, double x_up, double
 
                 return f;
 }
-
+/*
 int main(){
         TestNumInteg();
         return 1;
@@ -183,3 +183,4 @@ double test_func(double x){
         f = sin(1.0/x);
         return f;
 }
+*/
