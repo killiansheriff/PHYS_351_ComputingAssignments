@@ -45,13 +45,27 @@ double NumIntegrate (double *f, double h, int down, int up, int nmax){
                 sum = 19*f[down] + 75*f[down +1] + 50*f[down +2] + 50*f[down +3] +75*f[down +4]+19*f[down +5];
                 sum *= 5*h/45.0;
         }
+
         else { // more than 7 points
                 sum = (3/8.0)*f[down] + (7/6.0)*f[down +1] + (23/24.0)*f[down +2] + (23/24.0)*f[down +(nmax -2)] + (7/6.0)*f[down +(nmax-1)]+ (3/8.0)*f[down + nmax];
                 for(int i = 3; i <= (nmax -3); i++) {
                         sum += f[down +i];
                 }
                 sum *= h;
-        }
+                }
+
+        /*else // more than 7 points
+        {
+        // Implement Eq.(99)
+        // Put it in sum
+            sum = 0;
+            for (int i = 2; i <= (up - down); i=i+2)
+            {
+                sum += f[down+i-2] + 4*f[down+i-1] + f[down+i];
+            }
+            sum *= h/3.0;
+            }
+            */
         return sum;
 }
 
@@ -122,7 +136,7 @@ double Integrate(double (*integrand)(double), double x_down, double x_up, double
 
                 return f;
 }
-/*
+
 int main(){
         TestNumInteg();
         return 1;
@@ -169,4 +183,3 @@ double test_func(double x){
         f = sin(1.0/x);
         return f;
 }
-*/
