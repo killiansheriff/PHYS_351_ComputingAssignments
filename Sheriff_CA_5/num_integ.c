@@ -46,26 +46,23 @@ double NumIntegrate (double *f, double h, int down, int up, int nmax){
                 sum *= 5*h/45.0;
         }
 
-        else { // more than 7 points
-                sum = (3/8.0)*f[down] + (7/6.0)*f[down +1] + (23/24.0)*f[down +2] + (23/24.0)*f[down +(nmax -2)] + (7/6.0)*f[down +(nmax-1)]+ (3/8.0)*f[down + nmax];
-                for(int i = 3; i <= (nmax -3); i++) {
-                        sum += f[down +i];
-                }
-                sum *= h;
-                }
-
-        /*else // more than 7 points
-        {
+        else //{ // more than 7 points
+                //sum = (3/8.0)*f[down] + (7/6.0)*f[down +1] + (23/24.0)*f[down +2] + (23/24.0)*f[down +(nmax -2)] + (7/6.0)*f[down +(nmax-1)]+ (3/8.0)*f[down + nmax];
+                //for(int i = 3; i <= (nmax -3); i++) {
+                //        sum += f[down +i];
+                //}
+                //sum *= h;
+                //}
+                {
         // Implement Eq.(99)
         // Put it in sum
-            sum = 0;
-            for (int i = 2; i <= (up - down); i=i+2)
-            {
-                sum += f[down+i-2] + 4*f[down+i-1] + f[down+i];
-            }
-            sum *= h/3.0;
-            }
-            */
+                        sum = 0;
+                        for (int i = 2; i <= (up - down); i=i+2)
+                        {
+                                sum += f[down+i-2] + 4*f[down+i-1] + f[down+i];
+                        }
+                        sum *= h/3.0;
+                }
         return sum;
 }
 
@@ -101,6 +98,7 @@ double AdaptiveIntegrate(double (*func)(double), double x_down, double h, double
                 ans_l += (h/2.0)*w[i]*fl[i];
                 ans_r += (h/2.0)*w[i]*fr[i];
         }
+
         ans_now = ans_l + ans_r; //computes anser now
         err = (ans_now - ans_prev)/15.0; //computes error
 
@@ -123,8 +121,8 @@ double Integrate(double (*integrand)(double), double x_down, double x_up, double
         double h = (x_up - x_down)/2;
 
         f_prev[0]=integrand(x_down); //setting f_prev
-        f_prev[1]=integrand(x_down + 2);
-        f_prev[2]=integrand(x_down + 4);
+        f_prev[1]=integrand(x_down + h);
+        f_prev[2]=integrand(x_up);
         for (int i = 0; i < 3; i++) { //apply simpsons rule for right and left hand sides
                 ans_prev += (h)*w[i]*f_prev[i];
         }
@@ -141,6 +139,7 @@ int main(){
         TestNumInteg();
         return 1;
 }
+*/
 int TestNumInteg(){
         double f_prev[3];
         double w[3] = {1.0/3.0, 4.0/3.0, 1.0/3.0};
@@ -156,24 +155,24 @@ int TestNumInteg(){
 
         num_intervals=100;
         f= NumIntegrateV(integrand, x_down, x_up, num_intervals);
-        err=fabs((f-g))/g;
+        err=fabs((f-g)/g);
         fprintf(output,"f= %lf, Number of Intervals = %d, Relative Error =  %e\n",f, num_intervals, err);
 
         num_intervals=1000;
         f= NumIntegrateV(integrand, x_down, x_up, num_intervals);
-        err=fabs((f-g))/g;
+        err=fabs((f-g)/g);
         fprintf(output,"f= %lf, Number of Intervals = %d, Relative Error =  %e\n",f, num_intervals, err);
 
         tol= 1.0e-10;
         limit=10000;
         count=0;
         f = Integrate(integrand, x_down, x_up, tol, &count, limit);
-        err=fabs((f-g))/g;
+        err=fabs((f-g)/g);
         fprintf(output,"f= %lf, Number of Intervals = %d, Relative Error =  %e\n",f, count, err);
 
         num_intervals=count;
         f= NumIntegrateV(integrand, x_down, x_up, num_intervals);
-        err=fabs((f-g))/g;
+        err=fabs((f-g)/g);
         fprintf(output,"f= %lf, Number of Intervals = %d, Relative Error =  %e\n",f, num_intervals, err);
         fclose(output);
         return 1;
@@ -183,4 +182,3 @@ double test_func(double x){
         f = sin(1.0/x);
         return f;
 }
-*/

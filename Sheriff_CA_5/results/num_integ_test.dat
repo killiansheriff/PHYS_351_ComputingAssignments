@@ -1,4 +1,4 @@
-f= 2.665088, Number of Intervals = 100, Relative Error =  2.241711e-02
-f= 2.732403, Number of Intervals = 1000, Relative Error =  2.274519e-03
-f= 2.726202, Number of Intervals = 6813, Relative Error =  9.006400e-10
-f= 2.735516, Number of Intervals = 6813, Relative Error =  3.416487e-03
+f= 2.669973, Number of Intervals = 100, Relative Error =  2.062528e-02
+f= 2.745207, Number of Intervals = 1000, Relative Error =  6.971362e-03
+f= 2.726202, Number of Intervals = 6549, Relative Error =  9.169290e-12
+f= 2.721750, Number of Intervals = 6549, Relative Error =  1.632984e-03
