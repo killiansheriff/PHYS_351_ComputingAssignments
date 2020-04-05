@@ -46,7 +46,7 @@ double Kepler(double r){
         ene = -1.0;
 
         f = pphi/(mass*r*r); //define integrand for total energy
-        root= fabs(2.0/mass*(ene-pow(pphi,2)/(2*mass*pow(r,2))+K/r)+1e-16);
+        root= (fabs(2.0/mass*(ene-pow(pphi,2)/(2*mass*pow(r,2))+K/r)+1e-16));
         f/= pow(root,0.5);
         return f;
 
